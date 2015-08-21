@@ -13,6 +13,11 @@
 
   <name>Active Stack Framework</name>
   <description>Provides common interfaces.</description>
-  <url>http://activestack.github.io/${project.artifactId}/</url>
+
+  <scm>
+    <url>https://github.com/ActiveStack/${project.artifactId}</url>
+    <connection>scm:git:git://github.com/ActiveStack/${project.artifactId}.git</connection>
+    <developerConnection>scm:git:git@github.com/ActiveStack/${project.artifactId}.git</developerConnection>
+  </scm>
 
 </project>
