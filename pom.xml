@@ -15,6 +15,11 @@
   <name>Active Stack Framework</name>
   <description>Provides common interfaces.</description>
 
+  <scm>
+    <url>https://github.com/ActiveStack/${project.artifactId}</url>
+    <connection>scm:git:git://github.com/ActiveStack/${project.artifactId}.git</connection>
+    <developerConnection>scm:git:git@github.com:ActiveStack/${project.artifactId}.git</developerConnection>
+  </scm>
   <distributionManagement>
     <site>
       <id>gh-pages.git.server</id>

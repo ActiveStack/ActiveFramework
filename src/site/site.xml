@@ -9,7 +9,11 @@
   </skin>
 
   <body>
-    <menu ref="parent"/>
+    <!-- TODO: fix when site parent discovery works. -->
+    <!--<menu ref="parent"/>-->
+    <menu name="PARENT PROJECT">
+      <item name="${project.parent.name}" href="${project.parent.scm.url}"/>
+    </menu>
 
     <menu ref="reports"/>
   </body>
