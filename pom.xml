@@ -17,7 +17,7 @@
 
   <distributionManagement>
     <site>
-      <id>gh-pages.git.server2</id>
+      <id>gh-pages.git.server</id>
       <url>scm:git:git@github.com:ActiveStack/${project.artifactId}.git</url>
     </site>
   </distributionManagement>
@@ -28,28 +28,10 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-scm-publish-plugin</artifactId>
-      </plugin>
-      <plugin>
-        <artifactId>maven-site-plugin</artifactId>
         <configuration>
-          <!-- we use maven-scm-publish-plugin to deploy, so skip this. -->
-          <skipDeploy>true</skipDeploy>
+          <!-- TODO: Find out why local target/staging folder is always empty. -->
+          <content>target/site</content>
         </configuration>
-        <executions>
-          <execution>
-            <id>attach-descriptor</id>
-            <goals>
-              <goal>attach-descriptor</goal>
-            </goals>
-          </execution>
-          <execution>
-            <id>stage-for-scm-publish</id>
-            <phase>post-site</phase>
-            <goals>
-              <goal>stage</goal>
-            </goals>
-          </execution>
-        </executions>
       </plugin>
     </plugins>
   </build>
