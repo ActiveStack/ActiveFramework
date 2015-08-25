@@ -10,14 +10,47 @@
   </parent>
 
   <artifactId>active-framework</artifactId>
+  <packaging>jar</packaging>
 
   <name>Active Stack Framework</name>
   <description>Provides common interfaces.</description>
 
-  <scm>
-    <url>https://github.com/ActiveStack/${project.artifactId}</url>
-    <connection>scm:git:git://github.com/ActiveStack/${project.artifactId}.git</connection>
-    <developerConnection>scm:git:git@github.com/ActiveStack/${project.artifactId}.git</developerConnection>
-  </scm>
+  <distributionManagement>
+    <site>
+      <id>gh-pages.git.server2</id>
+      <url>scm:git:git@github.com:ActiveStack/${project.artifactId}.git</url>
+    </site>
+  </distributionManagement>
 
+  <build>
+    <plugins>
+      <!-- This exists only to trigger the maven-scm-publish-plugin to deploy the site to gh-pages. -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-scm-publish-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <artifactId>maven-site-plugin</artifactId>
+        <configuration>
+          <!-- we use maven-scm-publish-plugin to deploy, so skip this. -->
+          <skipDeploy>true</skipDeploy>
+        </configuration>
+        <executions>
+          <execution>
+            <id>attach-descriptor</id>
+            <goals>
+              <goal>attach-descriptor</goal>
+            </goals>
+          </execution>
+          <execution>
+            <id>stage-for-scm-publish</id>
+            <phase>post-site</phase>
+            <goals>
+              <goal>stage</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
 </project>
