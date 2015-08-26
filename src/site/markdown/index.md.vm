@@ -3,4 +3,4 @@ ${project.name}
   
 ${project.description}
 
-[![Circle CI](https://circleci.com/gh/ActiveStack/active-framework/tree/master.svg?style=svg)](https://circleci.com/gh/ActiveStack/active-framework/tree/master)
+[![Circle CI](https://circleci.com/gh/ActiveStack/${project.artifactId}/tree/master.svg?style=svg)](https://circleci.com/gh/ActiveStack/${project.artifactId}/tree/master)
