@@ -1,0 +1,3 @@
+depencencies:
+  override:
+    - mvn dependency:resolve -Possrh-staging
