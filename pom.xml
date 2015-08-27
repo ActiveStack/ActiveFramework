@@ -57,12 +57,23 @@
     </build>
 
     <profiles>
+        <!-- ActiveStack test snapshot repo. -->
         <profile>
-            <!-- @todo Remove this profile after we figure out how to activate it via circle.yml -->
             <id>ossrh-staging</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
+            <repositories>
+                <repository>
+                    <id>ossrh-snapshot</id>
+                    <url>https://oss.sonatype.org/content/groups/public/</url>
+                    <releases>
+                        <enabled>false</enabled>
+                        <checksumPolicy>fail</checksumPolicy>
+                    </releases>
+                    <snapshots>
+                        <enabled>true</enabled>
+                        <checksumPolicy>fail</checksumPolicy>
+                    </snapshots>
+                </repository>
+            </repositories>
         </profile>
     </profiles>
 </project>
