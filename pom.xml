@@ -1,44 +1,68 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+    <modelVersion>4.0.0</modelVersion>
 
-  <parent>
-    <groupId>org.activestack</groupId>
-    <artifactId>active-parent</artifactId>
-    <version>1.0.2</version>
-  </parent>
+    <parent>
+        <groupId>org.activestack</groupId>
+        <artifactId>active-parent</artifactId>
+        <version>1.0.3-SNAPSHOT</version>
+    </parent>
 
-  <artifactId>active-framework</artifactId>
-  <version>1.0.0-SNAPSHOT</version>
-  <packaging>jar</packaging>
+    <artifactId>active-framework</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
 
-  <name>Active Stack Framework</name>
-  <description>Provides common interfaces.</description>
+    <name>Active Stack Framework</name>
+    <description>Provides common interfaces.</description>
 
-  <scm>
-    <url>https://github.com/ActiveStack/${project.artifactId}</url>
-    <connection>scm:git:git://github.com/ActiveStack/${project.artifactId}.git</connection>
-    <developerConnection>scm:git:git@github.com:ActiveStack/${project.artifactId}.git</developerConnection>
-  </scm>
-  <distributionManagement>
-    <site>
-      <id>gh-pages.git.server</id>
-      <url>scm:git:git@github.com:ActiveStack/${project.artifactId}.git</url>
-    </site>
-  </distributionManagement>
+    <scm>
+        <url>https://github.com/ActiveStack/${project.artifactId}</url>
+        <connection>scm:git:git://github.com/ActiveStack/${project.artifactId}.git</connection>
+        <developerConnection>scm:git:git@github.com:ActiveStack/${project.artifactId}.git</developerConnection>
+    </scm>
+    <distributionManagement>
+        <site>
+            <id>gh-pages.git.server</id>
+            <url>scm:git:git@github.com:ActiveStack/${project.artifactId}.git</url>
+        </site>
+    </distributionManagement>
 
-  <build>
-    <plugins>
-      <!-- This exists only to trigger the maven-scm-publish-plugin to deploy the site to gh-pages. -->
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-scm-publish-plugin</artifactId>
-        <configuration>
-          <!-- TODO: Find out why local target/staging folder is always empty. -->
-          <content>target/site</content>
-        </configuration>
-      </plugin>
-    </plugins>
-  </build>
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-all</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <!-- This exists only to trigger the maven-scm-publish-plugin to deploy the site to gh-pages. -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-scm-publish-plugin</artifactId>
+                <configuration>
+                    <!-- TODO: Find out why local target/staging folder is always empty. -->
+                    <content>target/site</content>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <profiles>
+        <profile>
+            <!-- @todo Remove this profile after we figure out how to activate it via circle.yml -->
+            <id>ossrh-staging</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+        </profile>
+    </profiles>
 </project>
