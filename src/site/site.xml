@@ -15,6 +15,10 @@
       <item name="${project.parent.name}" href="${project.parent.scm.url}"/>
     </menu>
 
+    <menu name="CHILD PROJECT">
+      <item name="active-messaging-rabbitmq" href="http://activestack.github.io/active-messaging-rabbitmq"/>
+    </menu>
+
     <menu ref="reports"/>
   </body>
 
