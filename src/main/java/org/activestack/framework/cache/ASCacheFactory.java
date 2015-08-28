@@ -1,7 +1,7 @@
 package org.activestack.framework.cache;
 
 /**
- * Factory class used to instantiate concrete implementation of interface
+ * Factory class used to instantiate concrete implementation of interface, or maybe use your IoC / injection tool of choice...
  */
 public final class ASCacheFactory {
 

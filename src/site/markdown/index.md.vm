@@ -4,3 +4,43 @@ ${project.name}
 ${project.description}
 
 [![Circle CI](https://circleci.com/gh/ActiveStack/${project.artifactId}/tree/master.svg?style=svg)](https://circleci.com/gh/ActiveStack/${project.artifactId}/tree/master)
+
+* Maven Wrapper:      
+   Normally you instruct users to run the mvn command like the following:
+  
+        $ mvn clean package
+     But now, with a Maven Wrapper setup, you can instruct users to run wrapper scripts:
+  
+        $ ./mvnw clean package
+     or
+  
+        $ ./mvnw.cmd clean package
+     A normal Maven build will be executed with the one important change that if the user doesn't have the necessary 
+     version of Maven specified in `.mvn/wrapper/maven-wrapper.properties` it will be downloaded for the user first.     
+     
+     (Note: Initial maven-wrapper files were setup as per: [maven-wrapper](https://github.com/takari/maven-wrapper),
+      using: `mvn -N io.takari:maven:wrapper`. You may wish to use the same command when creating new projects.)
+
+* Unit Tests - To run unit tests, using the maven wrapper:
+        
+        $ ./mvnw clean test
+                
+* Install - To install a local snapshot version of this project, for use only by other local projects, run 'install':
+                    
+        $ ./mvnw clean install
+        
+* Deploy - To deplopy a public/shared snapshot version of this project, for use by other developers, run 'deploy'. This
+        will deploy the snapshot to the central snapshot repo. 
+        
+      NOTE: This requires the configuration steps described in [deploySnapshot](${project.parent.url}/publishing.html#deploySnapshot). 
+        
+      Snapshot artifacts will be deployed into repository: ${project.distributionManagement.snapshotRepository.url}. 
+
+        $ ./mvnw clean deploy
+    
+    Other developers must activate the `ossrh-snapshot` profile to use this repo and see your snapshot:
+    
+        otherproject$ ./mvnw clean test -Possrh-snapshot
+        
+* Release - To release a new, stable version of this project to the public maven central repository, follow the steps
+    described in [Release artifacts to OSSRH](${project.parent.url}/publishing.html#releaseToCentral). 
