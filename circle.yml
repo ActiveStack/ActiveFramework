@@ -1,3 +1,7 @@
 dependencies:
   override:
     - mvn dependency:resolve -Possrh-staging -X
+
+machine:
+  java:
+    version: oraclejdk8
