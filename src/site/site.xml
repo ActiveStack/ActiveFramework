@@ -10,10 +10,12 @@
 
   <body>
     <!-- TODO: fix when site parent discovery works. -->
-    <!--<menu ref="parent"/>-->
+    <menu ref="parent"/>
+<!--
     <menu name="PARENT PROJECT">
       <item name="${project.parent.name}" href="${project.parent.scm.url}"/>
     </menu>
+-->
 
     <menu name="CHILD PROJECT">
       <item name="active-messaging-rabbitmq" href="http://activestack.github.io/active-messaging-rabbitmq"/>
